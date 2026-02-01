@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mis XV Años | Keylee Sofía</title>
+
+  <!-- Fuentes elegantes -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --negro: #0f0f0f;
+      --rojo: #8b0000;
+      --dorado: #d4af6a;
+      --dorado-suave: #f3e3b5;
+      --texto: #f5f5f5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: radial-gradient(circle at top, #1a1a1a, var(--negro));
+      color: var(--texto);
+    }
+
+    section {
+      padding: 90px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .box {
+      width: 100%;
+      max-width: 1050px;
+      background: linear-gradient(180deg, #140000, var(--rojo));
+      border: 3px solid var(--dorado);
+      border-radius: 24px;
+      padding: 65px 50px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.55);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+
+    .box.visible { opacity: 1; transform: translateY(0); }
+
+    .box::before,
+    .box::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 2px solid var(--dorado);
+      opacity: 0.4;
+    }
+
+    .box::before { top: 15px; left: 15px; border-right: none; border-bottom: none; }
+    .box::after { bottom: 15px; right: 15px; border-left: none; border-top: none; }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.4rem;
+      color: var(--dorado);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--dorado);
+      font-size: 2.4rem;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      margin-bottom: 15px;
+      color: #f0e9dc;
+    }
+
+    /* Video */
+    .hero video {
+      width: 100%;
+      border-radius: 20px;
+      border: 2px solid var(--dorado);
+    }
+
+    /* Contador */
+    .contador {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      flex-wrap: wrap;
+      margin-top: 35px;
+    }
+
+    .time-box {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 3px solid var(--dorado);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle, #1a0000, #000);
+      box-shadow: inset 0 0 15px rgba(212,175,106,0.6);
+    }
+
+    .time-box span {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--dorado-suave);
+    }
+
+    /* Botones */
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 13px 36px;
+      border-radius: 40px;
+      border: 2px solid var(--dorado);
+      background: transparent;
+      color: var(--dorado);
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.35s ease;
+    }
+
+    .btn:hover {
+      background: var(--dorado);
+      color: #1a0000;
+      box-shadow: 0 0 20px rgba(212,175,106,0.8);
+    }
+
+    /* Galería */
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 45px;
+    }
+
+    /* ===== Galería cinematográfica ===== */
+    .galeria img {
+      width: 100%;
+      border-radius: 20px;
+      border: 2px solid rgba(212,175,106,0.35);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+      transition:
+        transform 0.8s ease,
+        box-shadow 0.8s ease,
+        filter 0.8s ease;
+      filter: brightness(0.92) contrast(1.05);
+      will-change: transform;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.12);
+      box-shadow: 0 40px 60px rgba(212,175,106,0.55);
+      filter: brightness(1.05) contrast(1.1);
+    }
+
+    /* Sutil efecto profundidad */
+    .galeria:hover img:not(:hover) {
+      transform: scale(0.96);
+      filter: brightness(0.85);
+    }
+
+    .img-center {
+      max-width: 240px;
+      margin: 30px auto 0;
+      display: block;
+      filter: drop-shadow(0 0 15px rgba(212,175,106,0.6));
+    }
+
+    footer {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    @media print {
+      .btn { display: none; }
+      .box { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* Canvas partículas */
+    #goldParticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Asegurar contenido encima */
+    section, footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Botón música */
+    #musicBtn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: 2px solid var(--dorado);
+      background: radial-gradient(circle, #1a0000, #000);
+      color: var(--dorado);
+      font-size: 1.3rem;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(212,175,106,0.6);
+      transition: all 0.3s ease;
+      z-index: 5;
+    }
+
+    #musicBtn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 28px rgba(212,175,106,0.9);
+    }
+
+    /* ===== Lluvia de Sobres animación ===== */
+    /* ===== Lluvia de Sobres – Animación Premium ===== */
+.sobre-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.sobre-animado {
+  position: relative;
+  animation: latidoElegante 5s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* Halo dorado */
+.sobre-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -35px;
+  background: radial-gradient(circle, rgba(212,175,106,0.35), transparent 70%);
+  opacity: 0;
+  filter: blur(18px);
+  animation: halo 5s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* ===== Brillo premium en títulos ===== */
+h1, h2 {
+  position: relative;
+  text-shadow:
+    0 0 8px rgba(212,175,106,0.35),
+    0 0 18px rgba(212,175,106,0.15);
+}
+
+/* Línea decorativa dorada */
+h2::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 2px;
+  margin: 18px auto 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--dorado),
+    transparent
+  );
+  opacity: 0.8;
+}
+
+
+/* Partículas doradas */
+.sobre-wrap::after {
+  content: "";
+  position: absolute;
+  inset: -50px;
+  background-image:
+    radial-gradient(circle, rgba(212,175,106,.8) 1px, transparent 2px),
+    radial-gradient(circle, rgba(212,175,106,.6) 1px, transparent 2px),
+    radial-gradient(circle, rgba(212,175,106,.4) 1px, transparent 2px);
+  background-size: 120px 120px, 180px 180px, 240px 240px;
+  opacity: 0;
+  animation: particulas 6s linear infinite;
+  z-index: 0;
+}
+
+/* Animaciones */
+@keyframes latidoElegante {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes halo {
+  0
+
+
+</style>
+</head>
+<body>
+
+<!-- Canvas partículas doradas -->
+<canvas id="goldParticles"></canvas>
+
+<!-- Música ambiental -->
+<audio id="bgMusic" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn">🎵</button>
+
+<!-- Video inicial -->
+<section class="hero">
+  <div class="box visible">
+    <video autoplay muted loop playsinline class="video-bg">
+    <source src="invitacion.mp4" type="video/mp4">
+    Tu navegador no soporta videos HTML5.
+</video>
+  </div>
+</section>
+
+<!-- Mensaje -->
+<section>
+  <div class="box">
+    <p>Hay momentos en la vida que son especiales por sí solos, pero al compartirlos con personas especiales como tú, se convierten en momentos imposibles de olvidar.</p>
+    <h2>21 de Marzo, 2026</h2>
+  </div>
+</section>
+
+<!-- Contador -->
+<section>
+  <div class="box">
+    <h2>Faltan</h2>
+    <div class="contador">
+      <div class="time-box"><span id="days"></span>Días</div>
+      <div class="time-box"><span id="hours"></span>Horas</div>
+      <div class="time-box"><span id="minutes"></span>Min</div>
+      <div class="time-box"><span id="seconds"></span>Seg</div>
+    </div>
+  </div>
+</section>
+
+<!-- Recepción -->
+<section>
+  <div class="box">
+    <h2>Recepción</h2>
+    <img src="copas.png" class="img-center" alt="Recepción">
+    <p>Dirección: Calle 30 # 50a - 17 Piso 04</p>
+    <p>Barrio: Zaragocilla</p>
+    <p>Cartagena de Indias</p>
+    <p><strong>07:00 PM</strong></p>
+    <a class="btn" target="_blank" href="https://www.google.com/maps?q=Calle+30+%2350a-17+Zaragocilla+Cartagena">Cómo llegar</a>
+  </div>
+</section>
+
+<!-- Galería -->
+<section>
+  <div class="box">
+    <h2>Un recorrido por estos 15 años</h2>
+    <div class="galeria">
+      <img src="foto1.jpg" loading="lazy">
+      <img src="foto2.jpg" loading="lazy">
+      <img src="foto3.jpg" loading="lazy">
+      <img src="foto4.jpg" loading="lazy">
+      <img src="foto5.jpg" loading="lazy">
+      <img src="foto6.jpg" loading="lazy">
+      <img src="foto7.jpg" loading="lazy">
+      <img src="foto8.jpg" loading="lazy">
+      <img src="foto9.jpg" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- Dress Code -->
+<section>
+  <div class="box">
+    <h2>Dress Code</h2>
+    <img src="pareja1.png" class="img-center" alt="Dress Code">
+    <p><strong>FORMAL</strong></p>
+    <p>Mujeres: Vestidos formales</p>
+    <p>Hombres: Formal</p>
+    <p><em>Excepto color vinotinto</em></p>
+  </div>
+</section>
+
+<!-- Lluvia de Sobres -->
+<section>
+  <div class="box">
+    <h2>Lluvia de Sobres</h2>
+      <div class="sobre-wrap">
+        <img src="sobre.png" class="img-center sobre-animado" alt="Lluvia de sobres">
+      </div>
+  </div>
+</section>
+
+<!-- Confirmación -->
+<section>
+  <div class="box">
+    <h2>Confirmar asistencia</h2>
+    <a class="btn" target="_blank" href="https://wa.me/573122364189">Confirmar aquí</a>
+    <br>
+    <a class="btn" href="tarjeta.html" target="_blank">Imprimir Invitación</a>
+  </div>
+</section>
+
+<!-- Final -->
+<footer>
+  <h1>¡Te Esperamos!</h1>
+  <p>Con cariño</p>
+  <p><strong>Keylee Sofía Amador Pérez</strong></p>
+</footer>
+
+<script defer>
+  const eventDate = new Date('March 21, 2026 19:00:00').getTime();
+
+  setInterval(() => {
+    const now = new Date().getTime();
+    const diff = eventDate - now;
+    document.getElementById('days').innerText = Math.floor(diff / (1000*60*60*24));
+    document.getElementById('hours').innerText = Math.floor((diff / (1000*60*60)) % 24);
+    document.getElementById('minutes').innerText = Math.floor((diff / (1000*60)) % 60);
+    document.getElementById('seconds').innerText = Math.floor((diff / 1000) % 60);
+  }, 1000);
+
+  const boxes = document.querySelectorAll('.box');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.2 });
+
+  boxes.forEach(box => observer.observe(box));
+
+    /* ===== Música ===== */
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("musicBtn");
+    let playing = false;
+
+    btn.addEventListener("click", () => {
+      if (!playing) {
+        music.play();
+        btn.textContent = "⏸️";
+      } else {
+        music.pause();
+        btn.textContent = "🎵";
+      }
+      playing = !playing;
+    });
+
+    /* ===== Partículas doradas ===== */
+    const canvas = document.getElementById("goldParticles");
+    const ctx = canvas.getContext("2d");
+
+    let particles = [];
+    const count = 80;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.r = Math.random() * 2 + 0.8;
+        this.speed = Math.random() * 0.3 + 0.1;
+        this.alpha = Math.random() * 0.5 + 0.3;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(212,175,106,${this.alpha})`;
+        ctx.fill();
+      }
+
+      move() {
+        this.y -= this.speed;
+        if (this.y < -5) {
+          this.y = canvas.height + 5;
+          this.x = Math.random() * canvas.width;
+        }
+        this.draw();
+      }
+    }
+
+    function init() {
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    }
+    init();
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => p.move());
+      requestAnimationFrame(animate);
+    }
+    animate();
+</script>
+</body>
+</html>

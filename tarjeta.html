@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Invitación XV Años | Keylee Sofía</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .tarjeta {
+    width: 360px;
+    padding: 45px 35px;
+    background: linear-gradient(180deg, #140000, #8b0000);
+    border: 3px solid #d4af6a;
+    border-radius: 22px;
+    text-align: center;
+    color: #f5f5f5;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+  }
+
+  .tarjeta::before,
+  .tarjeta::after {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border: 2px solid #d4af6a;
+    opacity: 0.5;
+  }
+
+  .tarjeta::before {
+    top: 18px;
+    left: 18px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .tarjeta::after {
+    bottom: 18px;
+    right: 18px;
+    border-left: none;
+    border-top: none;
+  }
+
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.2rem;
+    color: #d4af6a;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #f3e3b5;
+    margin-bottom: 25px;
+  }
+
+  p {
+    font-size: 0.95rem;
+    margin: 10px 0;
+    color: #f0e9dc;
+  }
+
+  .fecha {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 20px 0;
+    color: #d4af6a;
+  }
+
+  .divider {
+    width: 80px;
+    height: 2px;
+    margin: 25px auto;
+    background: linear-gradient(90deg, transparent, #d4af6a, transparent);
+  }
+
+  .pie {
+    margin-top: 25px;
+    font-size: 0.9rem;
+  }
+
+  @media print {
+    body {
+      background: #fff;
+    }
+    .tarjeta {
+      box-shadow: none;
+      page-break-inside: avoid;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="tarjeta">
+  <h1>Mis XV Años</h1>
+  <h2>Keylee Sofía</h2>
+
+  <p>
+    Hay momentos en la vida que son especiales por sí solos,<br>
+    pero al compartirlos contigo se vuelven inolvidables.
+  </p>
+
+  <div class="divider"></div>
+
+  <div class="fecha">21 de Marzo de 2026</div>
+
+  <p>
+    07:00 PM<br>
+    Calle 30 #50a - 17<br>
+    Barrio Zaragocilla<br>
+    Cartagena de Indias
+  </p>
+
+  <div class="divider"></div>
+
+  <div class="pie">
+    Con cariño<br>
+    <strong>Keylee Sofía Amador Pérez</strong>
+  </div>
+</div>
+
+</body>
+</html>
