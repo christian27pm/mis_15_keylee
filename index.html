@@ -463,7 +463,7 @@
         function closeRSVP() { document.getElementById('rsvpModal').style.display = 'none'; }
         
         function enviarWhatsApp(e) {
-            e.preventDefault(); const nombre = document.getElementById('nombre').value; const asistencia = document.getElementById('asistencia').value; const invitados = document.getElementById('invitados').value; const mensaje = document.getElementById('mensaje').value; const telefono = "573000000000"; const text = `Hola Keylee, soy *${nombre}*.\n\n${asistencia}.\nTotal personas: ${invitados}\n\nMensaje: ${mensaje}`;
+            e.preventDefault(); const nombre = document.getElementById('nombre').value; const asistencia = document.getElementById('asistencia').value; const invitados = document.getElementById('invitados').value; const mensaje = document.getElementById('mensaje').value; const telefono = "573122364189"; const text = `Hola Keylee, soy *${nombre}*.\n\n${asistencia}.\nTotal personas: ${invitados}\n\nMensaje: ${mensaje}`;
             window.open(`https://wa.me/${telefono}?text=${encodeURIComponent(text)}`, '_blank');
         }
 
